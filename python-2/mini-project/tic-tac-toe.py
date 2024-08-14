@@ -21,8 +21,8 @@ def display_board():
 def player_input(player):
     while True:
         try:
-            row = int(input(f"player {player}, enter the row (1-3): "))
-            col = int(input(f"player {player}, enter the column (1-3): "))
+            row = int(input(f"player {player}, enter the row (1-3): ")) - 1
+            col = int(input(f"player {player}, enter the column (1-3): ")) - 1
     
             if row >= 0 and row < 3 and col >= 0 and col < 3 and board[col][row] == " ":
                 board[col][row] = player
