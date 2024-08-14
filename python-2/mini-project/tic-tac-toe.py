@@ -52,6 +52,10 @@ def check_win():
     return None
 
 # now we actually play
+# start by defining the play function that will call on all the functions we've already made
+# the game will start with player X always and will loop for 9 times (all possible outcomes of the game)
+# 
+
 
 def play():
     current_player = "X"
