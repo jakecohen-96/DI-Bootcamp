@@ -23,15 +23,16 @@ def player_input(player):
         try:
             row_input = input(f"player {player}, enter the row (1-3): ")
 
-            if row_input.lower == "exit":
-                break
+            if row_input.lower() == "exit":
+                exit()
 
             col_input = input(f"player {player}, enter the column (1-3): ")
-            if col_input.lower == "exit":
-                break
+
+            if col_input.lower() == "exit":
+                exit()
             
-            row = int(row_input)
-            col = int(col_input)
+            row = int(row_input) - 1
+            col = int(col_input) - 1
 
             if row >= 0 and row < 3 and col >= 0 and col < 3 and board[col][row] == " ":
                 board[col][row] = player
