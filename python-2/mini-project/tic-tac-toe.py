@@ -11,8 +11,11 @@ def display_board():
         print("---|---|---")
 
 # getting the players input and placing it on the board
-# a function with a while loop, here we ask the player for an input in which the program
-# will loop until it is given a valid input.
+# a function with a while loop. here we ask the player for an input in which the program
+# will loop until it is given a valid input. wherein it will change it to an integer so
+# it works with the lists. - 1 because the index starts at 0 and we need to allign with python
+# then to check if the move is valid program will check if the placement of the input is not chosen already
+# if not it will place it and break
 
 def player_input(player):
     while True:
