@@ -34,7 +34,7 @@ def player_input(player):
 
 def check_win():
     for i in range(3):
-        
+
 # check rows and columns
 
         if board[i][0] == board[i][1] == board[i][2] ! = " ":
@@ -51,3 +51,17 @@ def check_win():
     
     return None
 
+# now we actually play
+
+def play():
+    current_player = "X"
+    for turn in range(9):
+        display_board()
+        player_input(current_player)
+        
+        winner = check_win()
+        if winner:
+            display_board()
+            print(f"Player {winner} is the winner!")
+            return
+        current_player = "0" if current_player == "X" else "X"   
