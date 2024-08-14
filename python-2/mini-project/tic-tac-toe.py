@@ -83,5 +83,5 @@ def play():
     display_board()
     print("a tie has been made")
 
-
+# finally we call on the play function to play the game
 play() 
