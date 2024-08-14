@@ -16,24 +16,14 @@ def display_board():
 # it works with the lists. - 1 because the index starts at 0 and we need to allign with python
 # then to check if the move is valid program will check if the placement of the input is not chosen already
 # if not it will place it and break
-# user can exit by typing exit
+
 
 def player_input(player):
     while True:
         try:
-            row_input = input(f"player {player}, enter the row (1-3): ")
-
-            if row_input.lower() == "exit":
-                exit()
-
-            col_input = input(f"player {player}, enter the column (1-3): ")
-
-            if col_input.lower() == "exit":
-                exit()
-            
-            row = int(row_input) - 1
-            col = int(col_input) - 1
-
+            row = input(f"player {player}, enter the row (1-3): ")
+            col = input(f"player {player}, enter the column (1-3): ")
+    
             if row >= 0 and row < 3 and col >= 0 and col < 3 and board[col][row] == " ":
                 board[col][row] = player
                 break
