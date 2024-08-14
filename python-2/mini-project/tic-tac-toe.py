@@ -16,17 +16,31 @@ def display_board():
 # it works with the lists. - 1 because the index starts at 0 and we need to allign with python
 # then to check if the move is valid program will check if the placement of the input is not chosen already
 # if not it will place it and break
+# user can exit by typing exit
 
 def player_input(player):
     while True:
         try:
-            row = int(input(f"player {player}, enter the row (1-3): ")) - 1
-            col = int(input(f"player {player}, enter the column (1-3): ")) - 1
+            row_input = input(f"player {player}, enter the row (1-3): ")
+
+            if row_input.lower == "exit":
+                break
+
+            col_input = input(f"player {player}, enter the column (1-3): ")
+            if col_input.lower == "exit":
+                break
+            
+            row = int(row_input)
+            col = int(col_input)
+
             if row >= 0 and row < 3 and col >= 0 and col < 3 and board[col][row] == " ":
                 board[col][row] = player
                 break
             else:
                 print("Wrong move try again")
+
+        except ValueError:
+            print("Please enter a number between 1 and 3.")
 
 # check who won with a range thats going to iterate over the list to check if there are three spaces taken up
 # i.e someone won, pointing out that three empty spaces don't count hence the ! = " "
@@ -37,7 +51,7 @@ def check_win():
 
 # check rows and columns
 
-        if board[i][0] == board[i][1] == board[i][2] ! = " ":
+        if board[i][0] == board[i][1] == board[i][2] != " ":
             return board[i][0]
         if board[0][i] == board[1][i] == board[2][i] != " ":
             return board[0][i]
@@ -85,3 +99,4 @@ def play():
 
 # finally we call on the play function to play the game
 play() 
+
