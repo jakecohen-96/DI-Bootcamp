@@ -28,17 +28,26 @@ def player_input(player):
             else:
                 print("Wrong move try again")
 
-# check who won 
+# check who won with a range thats going to iterate over the list to check if there are three spaces taken up
+# i.e someone won, pointing out that three empty spaces don't count hence the ! = " "
+# telling program to keep going if none of the conditions are met ( return None)
+
 def check_win():
     for i in range(3):
+        
+# check rows and columns
+
         if board[i][0] == board[i][1] == board[i][2] ! = " ":
             return board[i][0]
         if board[0][i] == board[1][i] == board[2][i] != " ":
             return board[0][i]
         
+ # check diagonals 
+        
     if board[0][0] == board[1][1] == board[2][2] != " ":
         return board[0][0]
     if board[0][2] == board[1][1] == board[2][0] != " ":
         return board[0][2]
-
+    
+    return None
 
