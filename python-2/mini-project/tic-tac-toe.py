@@ -54,18 +54,29 @@ def check_win():
 # now we actually play
 # start by defining the play function that will call on all the functions we've already made
 # the game will start with player X always and will loop for 9 times (all possible outcomes of the game)
-# 
+
 
 
 def play():
     current_player = "X"
     for turn in range(9):
+        # we call two of our first functions, one to represent the board, and one to ask the player
+        # for their input 
         display_board()
         player_input(current_player)
         
+        # third time we call the check_win() function to go through the conidtions we set up
+        # as to conclude who is the winner. If there is a winner it will print the winner name (again f-string)
+
         winner = check_win()
         if winner:
             display_board()
             print(f"Player {winner} is the winner!")
             return
+        # if there is no winner (obviously not after one round) the program will switch players
         current_player = "0" if current_player == "X" else "X"   
+
+        
+
+    display_board()
+    print("a tie has been made")
