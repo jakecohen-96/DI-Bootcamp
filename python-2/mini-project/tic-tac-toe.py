@@ -1,4 +1,4 @@
-# will use comments whenever possible
+# will use comments whenever possible (oh boy)
 # int. of board, strings returning in a list of lists (easy to manage) of possible outcomes (3*3)
 
 board = [[" " for _ in range(3)] for _ in range(3)]
@@ -67,16 +67,21 @@ def play():
         
         # third time we call the check_win() function to go through the conidtions we set up
         # as to conclude who is the winner. If there is a winner it will print the winner name (again f-string)
-
+        # and finally the board function (visual conformation)
         winner = check_win()
         if winner:
             display_board()
             print(f"Player {winner} is the winner!")
             return
+        
         # if there is no winner (obviously not after one round) the program will switch players
         current_player = "0" if current_player == "X" else "X"   
 
-        
+
+    # in the case of a tie it will print that its a tie (obvi the board for visual conformation)
 
     display_board()
     print("a tie has been made")
+
+
+play() 
