@@ -7,11 +7,11 @@ data = {
     "age": 35,
     "children": [
         {
-            "firstName": "Summer",
+            "firstName": "Alice",
             "age": 6
         },
         {
-            "firstName": "Morty",
+            "firstName": "Bob",
             "age": 8
         }
     ]
@@ -27,9 +27,9 @@ with open(json_file, 'r') as file_obj:
 
 children = data.get("children", [])
 for i, child in enumerate(children):
-    if child == 'Summer':
+    if child == 'Alice':
         favorite_color = 'Yellow'
-    elif child == 'Morty':
+    elif child == 'Bob':
         favorite_color = 'Blue'
     else:
         favorite_color = 'Unknown'

@@ -5,14 +5,14 @@
       "favorite_color": "Unknown",
       "name": {
         "age": 6,
-        "firstName": "Summer"
+        "firstName": "Alice"
       }
     },
     {
       "favorite_color": "Unknown",
       "name": {
         "age": 8,
-        "firstName": "Morty"
+        "firstName": "Bob"
       }
     }
   ],
