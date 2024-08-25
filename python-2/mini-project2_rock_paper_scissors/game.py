@@ -27,3 +27,10 @@ class game():
             return "You won! One point! for you" 
         
         return "loss"
+    
+    def play(self):
+        user_item = self.get_user_item()
+        computer_item = self.get_computer_item()
+        result = self.get_game_result(user_item, computer_item)
+        print(f'You slected {user_item}, Computer chose {computer_item} Result: {result}')
+        return result
