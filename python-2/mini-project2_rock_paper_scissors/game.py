@@ -13,3 +13,8 @@ class game():
                     return 'Paper'
                 else:
                     print('Please enter a valid option')
+                    
+    def get_computer_item(self):
+        choices = ['rock', 'paper', 'scissors']
+        computer_choice = random.choices(choices)
+        return computer_choice
