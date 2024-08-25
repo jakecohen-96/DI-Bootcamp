@@ -11,7 +11,7 @@ def MainMenu():
         if choice == "1":
             handle_input()
             continue_option = input('Would you like to continue? y/n?')
-            if continue_option != "Y":
+            if continue_option != "Y".lower():
                 print('Goodbye!')
                 break
         elif choice == "2":
