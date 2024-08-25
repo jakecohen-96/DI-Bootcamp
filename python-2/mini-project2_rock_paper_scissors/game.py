@@ -15,9 +15,10 @@ class play():
                     print('Please enter a valid option')
 
     def get_computer_item(self):
-        choices = ['rock', 'paper', 'scissors']
-        computer_choice = random.choices(choices)
-        return computer_choice
+        def get_computer_item(self):
+            choices = ['rock', 'paper', 'scissors']
+            computer_choice = random.choice(choices)
+            return computer_choice
     
     def get_game_result(self, user_choice: str, computer_choice: str) -> str:
         if user_choice == computer_choice:
