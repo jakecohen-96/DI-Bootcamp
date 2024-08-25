@@ -13,8 +13,17 @@ class game():
                     return 'Paper'
                 else:
                     print('Please enter a valid option')
-                    
+
     def get_computer_item(self):
         choices = ['rock', 'paper', 'scissors']
         computer_choice = random.choices(choices)
         return computer_choice
+    
+    def get_game_result(self, user_choice: str, computer_choice: str) -> str:
+        if user_choice == computer_choice:
+            print('It is a draw!')
+
+        if (user_choice == 'rock' and computer_choice == 'scissors') or (user_choice == 'paper' and computer_choice == 'rock') or (user_choice == 'scissors' and computer_choice == 'paper'):
+            return "You won! One point! for you" 
+        
+        return "loss"
