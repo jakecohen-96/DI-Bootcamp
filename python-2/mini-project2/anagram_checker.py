@@ -7,8 +7,9 @@ class AnagramChecker:
         return word in self.words
         
 
-    def get_anagrams(self, word):
-        pass
+    def get_anagrams(self, word: str) -> list[str]:
+        return [w for w in self.words if self.is_anagram(word, w) and w != word]
+        
 
     def is_anagram(self, word1: str, word2: str) -> bool:
         return sorted(word1) == sorted(word2)
