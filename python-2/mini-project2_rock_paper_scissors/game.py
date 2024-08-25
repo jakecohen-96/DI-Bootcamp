@@ -1,3 +1,5 @@
+import random
+
 class game():
     def get_user_item(self):
         while True:
