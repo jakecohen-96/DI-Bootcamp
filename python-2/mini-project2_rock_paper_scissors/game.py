@@ -34,7 +34,7 @@ class play:
     
     def play(self):
         user_item = self.get_user_item()
-        computer_item = self.get_computer_item()  # This should return a string, not a list
+        computer_item = self.get_computer_item()  # This should return a string, not a list explanation: kept giving me the computer choice as list item and not a string do changed it
         result = self.get_game_result(user_item, computer_item)
         print(f'You selected {user_item.capitalize()}, Computer chose {computer_item}. Result: {result}')
         return result
