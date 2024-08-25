@@ -22,18 +22,28 @@ def MainMenu():
 
 def handle_input():
     checker = AnagramChecker()
-    user_input = input('Please enter a word!').lower().strip()
-
-    if " " in user_input:
-        print('Please enter a valid word')
-        return
-    if checker.is_valid_word(user_input):
-        anagrams = checker.get_anagrams(user_input)
-        print(f'What you wrote:  {user_input.upper()}' )
-        print('Here is a list of anagrams for your word: ')
-        print(f'{', '.join(anagrams) if anagrams else 'No anagrams found.'}')
-    else:
-        print(f"The word '{user_input}' is not a valid English word.")
+    
+    while True:
+        user_input = input('Please enter a word (or type "exit" to quit to the main menu): ').lower().strip()
+        if user_input == "exit":
+            break
+        if " " in user_input or not user_input.isalpha():
+            print('Please enter a single word containing only alphabetic characters.')
+            continue
+        if checker.is_valid_word(user_input):
+            anagrams = checker.get_anagrams(user_input)
+            print(f'What you wrote: {user_input.upper()}')
+            if anagrams:
+                print('Here is a list of anagrams for your word:')
+                print(anagrams)
+            else:
+                print("No anagrams found.")
+        else:
+            print(f"The word '{user_input}' is not a valid English word.")
+        
+        continue_choice = input("Would you like to check another word? (y/n): ").lower().strip()
+        if continue_choice != 'y':
+            break
 
 if __name__ == "__main__":
     MainMenu()
