@@ -8,3 +8,7 @@ class TheIncredibles(Family):
                     print(f"{member['name']}'s power is: {member['power']}")
                 else:
                     raise Exception(f"{member['name']} is not over 18 years old no power yet!")
+                
+    def incredible_presentation(self):
+        print("Here is our powerful family:")
+        Family().family_presentation()
