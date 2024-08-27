@@ -42,3 +42,10 @@ cat3 = Siamese('Simese', 5)
 
 all_cats = [cat1, cat2, cat3]   
 
+# 3
+sara_pets = Pets(all_cats)
+
+#4 
+
+sara_pets.walk()
+
