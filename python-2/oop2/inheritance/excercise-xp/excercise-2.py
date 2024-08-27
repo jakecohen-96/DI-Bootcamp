@@ -12,4 +12,13 @@ class dog():
         return speed
     
     def fight(self, other_dog):
-        
+        self_strength = self.weight * self.run_speed()
+
+        other_dog_strength = other_dog.run_speed() * other_dog.weight 
+
+        if self_strength > other_dog_strength:
+            print('That is a good boy!')
+        elif other_dog_strength > self_strength:
+            print('strength training tomorrow')
+        else:
+            print('Its a draw' )    
