@@ -29,3 +29,16 @@ class Bengal(Cat):
 class Chartreux(Cat):
     def sing(self, sounds):
         return f'{sounds}'
+    
+# 1
+class Siamese(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+    
+# 2
+cat1 = Bengal('Bengal', 3)
+cat2 = Chartreux('Chartreux', 4)
+cat3 = Siamese('Simese', 5)
+
+all_cats = [cat1, cat2, cat3]   
+
