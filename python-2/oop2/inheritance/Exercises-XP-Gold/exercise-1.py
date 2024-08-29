@@ -40,7 +40,13 @@ class MinimumBalanceAccount(BankAccount):
 
 class atm():
     def __init__(self, account_list, try_limit):
+        if not all(isinstance(account, (BankAccount, MinimumBalanceAccount)) for account in account_list):
+            raise ValueError("account_list must contain only BankAccount or MinimumBalanceAccount instances")
+        if not isinstance(try_limit, int) or try_limit <= 0:
+            raise ValueError("try_limit must be a positive integer")
+        
         self.account_list = account_list
         self.try_limit = try_limit
+        self.current_tries = 0
 
 
