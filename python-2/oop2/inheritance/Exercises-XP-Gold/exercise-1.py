@@ -38,7 +38,7 @@ class MinimumBalanceAccount(BankAccount):
                 raise ValueError("Withdrawal would go below the minimum balance")
             super().withdraw(amount)
 
-class atm():
+class ATM():
     def __init__(self, account_list, try_limit):
         if not all(isinstance(account, (BankAccount, MinimumBalanceAccount)) for account in account_list):
             raise ValueError("account_list must contain only BankAccount or MinimumBalanceAccount instances")
@@ -109,8 +109,12 @@ class atm():
                 break
             else:
                 print('please choose valid option')
+                
+if __name__ == "__main__":  
+    account1 = BankAccount('username', 'password', balance=500)
 
+    account_list = [account1]
 
+    try_limit = 3
 
-
-
+    atm = ATM(account_list, try_limit)
