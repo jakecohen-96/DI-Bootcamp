@@ -1,18 +1,31 @@
 class BankAccount():
-    def __init__(self, balance = 0):
+    def __init__(self, username, password, balance=0, authenticated=False):
+        self.username = username
+        self.password = password
+        self.authenticated = authenticated
         self.balance = balance
 
+    def authenticate(self, username: str, password: str):
+        if (username == 'username') and (password == 'password'):
+            self.authenticated = True
+
     def deposit(self, amount):
-        if amount <= 0:
-            raise ValueError("Please deposit an amount over 0")
+        if self.authenticated is True:
+            if amount <= 0:
+                raise ValueError("Please deposit an amount over 0")
+            else:
+                self.balance += amount 
         else:
-           self.balance += amount 
+            raise ('Not authenticated')
 
     def withdraw(self, amount):
-        if amount >= 0:
-            raise ValueError("Not enough cash!!")
+        if self.authenticated is True:
+            if amount >= 0:
+                raise ValueError("Not enough cash!!")
+            else:
+                self.balance -= amount 
         else:
-           self.balance -= amount 
+            raise ('Not authenticated')
         
 
 class MinimumBalanceAccount(BankAccount):
