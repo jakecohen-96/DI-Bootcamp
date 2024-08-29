@@ -49,4 +49,21 @@ class atm():
         self.try_limit = try_limit
         self.current_tries = 0
 
+    def show_main_menu(self):
+        while True:
+            print("\nATM Main Menu")
+            print("1. Log in")
+            print("2. Exit")
+            choice = input("Please select an option: ")
+
+            if choice == '1':
+                username = input('Please enter a username')
+                password = input('Please enter password')
+                self.log_in(username, password)
+            elif choice == '2':
+                break
+            else:
+                print('Invalid option')
+                
+
 
