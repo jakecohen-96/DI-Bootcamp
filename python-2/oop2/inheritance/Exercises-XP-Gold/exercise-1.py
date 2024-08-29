@@ -65,5 +65,26 @@ class atm():
             else:
                 print('Invalid option')
                 
+    def log_in(self, username, password):
+        for account in self.account_list:
+            if account.authenticate(username, password):
+                print(f"Welcome, {username}!")
+                self.show_account_menu(account)
+                return
+        
+        self.current_tries += 1
+        if self.current_tries >= self.try_limit:
+            print("Max tries reached. The system will now shut down.")
+            exit()
+        else:
+            print(f"Incorrect credentials. You have {self.try_limit - self.current_tries} tries left.")
+            username = input("Enter username: ")
+            password = input("Enter password: ")
+            self.log_in(username, password)
+
+    def show_account_menu(self, account):
+        pass
+
+
 
 
