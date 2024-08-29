@@ -38,4 +38,9 @@ class MinimumBalanceAccount(BankAccount):
                 raise ValueError("Withdrawal would go below the minimum balance")
             super().withdraw(amount)
 
+class atm():
+    def __init__(self, account_list, try_limit):
+        self.account_list = account_list
+        self.try_limit = try_limit
+
 
