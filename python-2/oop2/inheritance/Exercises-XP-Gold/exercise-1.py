@@ -83,7 +83,33 @@ class atm():
             self.log_in(username, password)
 
     def show_account_menu(self, account):
-        pass
+        while True:
+            print("\nAccount Menu")
+            print("1. Deposit")
+            print("2. Withdraw")
+            print("3. Exit")
+            choice = input('Please select an opton: ')
+            
+            if choice == '1':
+                amount = int(input('Enter amount to deposit: '))
+                try:
+                    account.deposit(amount)
+                    print(f"Deposited {amount}. New balance: {account.balance}")
+                except ValueError as e:
+                    print(e)
+            elif choice == '2':
+                amount = int(input('please enter amount to withdraw'))
+                try:
+                    account.withdraw(amount)
+                    print(f'Withdrew {amount}. New Balance: {account.balance}')
+                except ValueError as e:
+                    print(e)
+            elif choice == '3':
+                print('thanks for coming')
+                break
+            else:
+                print('please choose valid option')
+
 
 
 
