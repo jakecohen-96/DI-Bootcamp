@@ -1,0 +1,11 @@
+SELECT * FROM students;
+SELECT first_name, last_name FROM students; 
+SELECT * FROM students WHERE student_id = 2;
+SELECT * FROM students WHERE last_name = 'Benichou' AND first_name = 'Marc';
+SELECT * FROM students WHERE last_name = 'Benichou' OR first_name = 'Marc';
+SELECT * FROM students WHERE first_name ILIKE '%a%';
+SELECT * FROM students WHERE first_name ILIKE 'a%';
+SELECT * FROM students WHERE first_name ILIKE '%a';
+SELECT * FROM students WHERE first_name ILIKE '%a_';
+SELECT * FROM students WHERE student_id IN (1,3);
+SELECT * FROM students WHERE birth_date >= '2000-01-01';
