@@ -14,11 +14,29 @@
 
 # first name
 # last name
-# class name
+# birthdate
+# tz
+# favorite_color
 
 import sqlite3
 from tabulate import tabulate
 
-class StudentInfo():
-    def __init__(self):
-        pass
+def create_table(): 
+    create_student_table = ''' CREATE TABLE IF NOT EXISTS
+    person_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    birthdate DATE,
+    tz VARCHAR(10),
+    favorite_color VARCHAR(30)'''
+
+    try:
+        with sqlite3.connect('student.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute(create_student_table)
+            conn.commit()
+            conn.close()
+    except sqlite3.Error as e:
+        print(e)
+
+#
