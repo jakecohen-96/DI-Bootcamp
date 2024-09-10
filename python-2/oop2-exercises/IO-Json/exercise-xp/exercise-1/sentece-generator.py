@@ -1,8 +1,8 @@
 import random
 
 def get_words_from_file():
-    with open('sowpods.txt', 'r') as file:
-        words = file.read().splitlines
+    with open('/Users/jake/Desktop/DI-Bootcamp/python-2/oop2-exercises/IO-Json/exercise-xp/exercise-1/sowpods.txt', 'r') as file:
+        words = file.read().splitlines()
     return words
 
 def get_random_sentence(length):
@@ -14,8 +14,8 @@ def get_random_sentence(length):
 def main():
     print('Welcome to the Random Sentence Generator! Please enter the length of you random sentence')
     try:
-        length = len(input('Please enter a number between 2 and 20'))
-        if 2>= length <= 20:
+        length = int(input('Please enter a number between 2 and 20: '))
+        if 2<= length <= 20:
             sentence = get_random_sentence(length)
             print(f'Here is your sentence: {sentence}')
         else:
@@ -23,3 +23,4 @@ def main():
     except ValueError:
         print('Invalid character, please enter numbers only')
         
+main()
