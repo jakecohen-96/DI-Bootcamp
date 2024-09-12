@@ -15,7 +15,9 @@ class ToDoList():
                 print(f'{i + 1} - {task['task']}: {status}')
 
     def add_tasks(self, task):
-        pass        
+        new_task = {"task": task, "completed": False}
+        self.tasks.append(new_task)
+        print(f'{task} added!')
 
     def remove_tasks(self, task_number):
         pass
@@ -42,3 +44,10 @@ if __name__ == "__main__":
 
     print('tasks after complete: ')
     todo_list.view_tasks()    
+
+    todo_list.add_tasks('jumping')
+    todo_list.add_tasks('running')
+    todo_list.add_tasks('shopping')
+    todo_list.add_tasks('gamoing')
+    todo_list.add_tasks('walking the dog')
+    todo_list.view_tasks()
