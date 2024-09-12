@@ -12,7 +12,7 @@ class ToDoList():
         else:
             for i, task in enumerate(self.tasks):
                 status = '✔️' if task.get('completed') else '❌'
-                print(f'{i + 1}, {task['task']} - {status}')
+                print(f'{i + 1} - {task['task']}: {status}')
 
     def add_tasks(self, task):
         pass        
@@ -27,7 +27,7 @@ class ToDoList():
         else:
             print('Invalid option chosen')
 
-    def edit_task(self, task_number, new_task):
+    def edit_tasks(self, task_number, new_task):
         pass
 
 
@@ -40,5 +40,5 @@ if __name__ == "__main__":
     todo_list.complete_tasks(1)
     print('completed task 2')
 
-    print('tasks before complete: ')
+    print('tasks after complete: ')
     todo_list.view_tasks()    
