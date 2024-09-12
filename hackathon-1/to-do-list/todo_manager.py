@@ -3,7 +3,12 @@ class ToDoList():
         self.tasks = []
 
     def view_task(self):
-        pass
+        if not self.tasks:
+            print('No items present in the list. Please add some first.')
+        else:
+            for i, task in enumerate(self.tasks):
+                status = '✔️' if task.get('completed') else '❌'
+                print(f'{i + 1}, {task['task']} - {status}')
 
     def add_task(self, task):
         pass        
