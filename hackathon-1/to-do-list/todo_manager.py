@@ -20,10 +20,15 @@ class ToDoList():
         print(f'{task} added!')
 
     def remove_tasks(self, task_number):
-        pass
+        if 0 <= task_number < len(self.tasks):
+            removed_task = self.tasks.pop(task_number)
+            print(f'Task of "{removed_task['task']}" removed!')
+        else:
+            print('Invalid option chosen')
 
     def complete_tasks(self, task_number):
-        if 0 <= task_number < len(self.tasks):
+        task_index = task_number - 1
+        if 0 <= task_index < len(self.tasks):
             self.tasks[task_number]['completed'] = True
             print(f'{self.tasks[task_number]['task']} completed!')
         else:
@@ -50,4 +55,8 @@ if __name__ == "__main__":
     todo_list.add_tasks('shopping')
     todo_list.add_tasks('gamoing')
     todo_list.add_tasks('walking the dog')
+    todo_list.complete_tasks(5)
+    todo_list.complete_tasks(3)
+    todo_list.view_tasks()
+    todo_list.remove_tasks(3)
     todo_list.view_tasks()
