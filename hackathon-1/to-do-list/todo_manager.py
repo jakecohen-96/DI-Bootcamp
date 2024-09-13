@@ -14,6 +14,7 @@ class ToDoList():
             with open(filename, 'r') as file:
                 self.tasks = json.load(file)
         except FileNotFoundError:
+            print("No list found. One was created!")
             self.tasks = []
 
     def view_tasks(self):
