@@ -1,6 +1,20 @@
+import json
+
 class ToDoList():
     def __init__(self):
         self.tasks = []
+        self.load_from_file()
+
+    def save_to_file(self, filename="tasks.json"):
+        with open(filename, 'w') as file:
+            json.dump(self.tasks, file)
+
+    def load_from_file(self, filename="tasks.json"):
+        try:
+            with open(filename, 'r') as file:
+                self.tasks = json.load(file)
+        except FileNotFoundError:
+            self.tasks = []
 
     def view_tasks(self):
         if not self.tasks:
@@ -40,3 +54,4 @@ class ToDoList():
             print(f'The task "{old_task}" has been updated to "{new_task}". \nIf this task was completed, it has also been changed to "Incomplete"')
         else:  
             print('Invalid option chosen')
+

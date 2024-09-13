@@ -40,6 +40,7 @@ def main():
             todo_list.view_tasks()
 
         elif choice == "6":
+            todo_list.save_to_file()
             print("Thank you for using the app! Here is your final list. Goodbye!")
             todo_list.view_tasks()
             break
