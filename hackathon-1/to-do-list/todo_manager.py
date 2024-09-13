@@ -45,6 +45,14 @@ class ToDoList():
         else:
             print('Invalid option chosen') 
 
+    def incomplete_tasks(self, task_number):
+        task_index = task_number - 1
+        if 0<= task_index < len(self.tasks):
+            self.tasks[task_index]['completed'] = False
+            print(f'"{self.tasks[task_index]['task']}" set to incomplete!')
+        else:
+            print('Invalid optoon chosen')
+
     def edit_tasks(self, task_number, new_task):
         task_index = task_number - 1
         if 0 <= task_index < len(self.tasks):
@@ -55,3 +63,10 @@ class ToDoList():
         else:  
             print('Invalid option chosen')
 
+    def clear_all(self):
+        confirm = input('Are you sure you want to clear the list? This action cannot be undone. Y/N? ')
+        if confirm.lower() == "y":
+            self.tasks.clear()
+            print("List has been cleared")
+        else:
+            print("List has not been cleared")

@@ -2,12 +2,14 @@ from todo_manager import ToDoList
 
 def main_menu():
     print("\nTo-Do List Menu:")
-    print("1. View Tasks")
-    print("2. Add Task")
-    print("3. Remove Task")
+    print("1. View all Tasks in list")
+    print("2. Add a new Task")
+    print("3. Remove a Task")
     print("4. Mark Task as Completed")
-    print("5. Edit Task")
-    print("6. Exit")
+    print("5. Mark a Task as InComplete")
+    print("6. Edit a Task")
+    print("7. Clear list")
+    print("8. Exit")
 
 def main():
     todo_list = ToDoList()
@@ -34,12 +36,21 @@ def main():
             todo_list.view_tasks()
 
         elif choice == "5":
+            task_incomp = int(input('Please enter number of task you wish to mark incomplete: '))
+            todo_list.incomplete_tasks(task_incomp)
+            todo_list.view_tasks()
+
+        elif choice == "6":
             task_edit_numb = int(input("Please enter number of task you wish to edit: "))
             task_edit = input("Please enter what you wish to change it to: ")
             todo_list.edit_tasks(task_edit_numb, task_edit)
             todo_list.view_tasks()
 
-        elif choice == "6":
+        elif choice == "7":
+            todo_list.clear_all()
+            todo_list.view_tasks()
+
+        elif choice == "8":
             todo_list.save_to_file()
             print("Thank you for using the app! Here is your final list. Goodbye!")
             todo_list.view_tasks()
