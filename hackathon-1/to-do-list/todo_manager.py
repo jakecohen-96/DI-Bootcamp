@@ -29,7 +29,7 @@ class ToDoList():
             self.tasks[task_index]['completed'] = True
             print(f'{self.tasks[task_index]["task"]} completed!')
         else:
-            print('Invalid option chosen')
+            print('Invalid option chosen') 
 
     def edit_tasks(self, task_number, new_task):
         task_index = task_number - 1
