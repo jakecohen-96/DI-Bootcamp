@@ -24,12 +24,12 @@ def main():
             todo_list.view_tasks()
 
         elif choice == "3":
-            task_num = input("Please enter the number of the task you wish to delete: ")
+            task_num = int(input("Please enter the number of the task you wish to delete: "))
             todo_list.remove_tasks(task_num)
             todo_list.view_tasks()
         
         elif choice == "4":
-            task_comp = input("Please choose task you wish to mark completed: ")
+            task_comp = int(input("Please choose task you wish to mark completed: "))
             todo_list.complete_tasks(task_comp)
             todo_list.view_tasks()
 
