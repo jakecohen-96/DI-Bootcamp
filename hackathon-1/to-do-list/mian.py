@@ -34,8 +34,9 @@ def main():
             todo_list.view_tasks()
 
         elif choice == "5":
-            task_edit = input("Please enter number of task you wish to edit: ")
-            todo_list.edit_tasks(task_edit)
+            task_edit_numb = int(input("Please enter number of task you wish to edit: "))
+            task_edit = input("Please enter what you wish to change it to: ")
+            todo_list.edit_tasks(task_edit_numb, task_edit)
             todo_list.view_tasks()
 
         elif choice == "6":

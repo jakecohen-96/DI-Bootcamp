@@ -43,28 +43,3 @@ class ToDoList():
             print(f'The task "{old_task}" has been updated to "{new_task}". \nIf this task was completed, it has also been changed to "Incomplete"')
         else:  
             print('Invalid option chosen')
-
-
-if __name__ == "__main__":
-    todo_list = ToDoList()
-
-    print('tasks before complete: ')
-    todo_list.view_tasks()
-
-    todo_list.complete_tasks(1)
-    print('completed task 2')
-
-    print('tasks after complete: ')
-    todo_list.view_tasks()    
-
-    todo_list.add_tasks('jumping')
-    todo_list.add_tasks('running')
-    todo_list.add_tasks('shopping')
-    todo_list.add_tasks('gamoing')
-    todo_list.add_tasks('walking the dog')
-    todo_list.complete_tasks(5)
-    todo_list.complete_tasks(3)
-    todo_list.view_tasks()
-    todo_list.remove_tasks(3)
-    todo_list.edit_tasks(2, 'petting the dog')
-    todo_list.view_tasks()
