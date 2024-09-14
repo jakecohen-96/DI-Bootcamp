@@ -35,4 +35,13 @@ class AuthManager():
         else:
             print('username or password entered is incorrect')
             return False
+        
+    def view_users(self):
+        if not self.users:
+            print('No registered users found!')
+            return
+        else:
+            print('Here is a list of all the registered users: ')
+            for username in self.users:
+                print(f'- {username}')
 

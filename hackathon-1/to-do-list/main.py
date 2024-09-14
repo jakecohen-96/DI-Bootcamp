@@ -20,6 +20,7 @@ def main():
         print("Welcome! Please choose an option:")
         print("1. Register")
         print("2. Login")
+        print("3. View registered users")
         choice = input("Please choose an option: ")
 
         if choice == '1':
@@ -31,6 +32,10 @@ def main():
             username = input('Please enter username: ')
             password = input('Please enter password: ')
             logged_in = auth_manager.log_in(username, password)
+
+        elif choice == '3':
+            auth_manager.view_users()
+            
         else:
             print('Invalid option chosen!')
 
