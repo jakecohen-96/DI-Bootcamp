@@ -30,29 +30,41 @@ class ToDoList():
         self.tasks.append(new_task)
         print(f'"{task}" added!')
 
-    def remove_tasks(self, task_number):
-        task_index = task_number - 1
-        if 0 <= task_index < len(self.tasks):
-            removed_task = self.tasks.pop(task_index)
-            print(f'Task of "{removed_task['task']}" removed!')
-        else:
-            print('Invalid option chosen')
+    def remove_tasks(self, task_numbers):
+        try:
+            task_indices = [int(num.strip()) - 1 for num in task_numbers.split(',') if num.strip().isdigit()]
+            for task_index in task_indices:
+                if 0 <= task_index < len(self.tasks):
+                    removed_task = self.tasks.pop(task_index)
+                    print(f'Task of "{removed_task['task']}" removed!')
+                else:
+                    print('Invalid option chosen')
+        except ValueError:
+            print('No such item number present in the list (Ps. Seperate with commas)')
 
-    def complete_tasks(self, task_number):
-        task_index = task_number - 1
-        if 0 <= task_index < len(self.tasks):
-            self.tasks[task_index]['completed'] = True
-            print(f'{self.tasks[task_index]["task"]} completed!')
-        else:
-            print('Invalid option chosen') 
+    def complete_tasks(self, task_numbers):
+        try:
+            task_indices = [int(num.strip()) - 1 for num in task_numbers.split(',') if num.strip().isdigit()]
+            for task_index in task_indices:
+                if 0 <= task_index < len(self.tasks):
+                    self.tasks[task_index]['completed'] = True
+                    print(f'{self.tasks[task_index]["task"]} completed!')
+                else:
+                    print('Invalid option chosen') 
+        except ValueError:
+            print('No such item number present in the list (Ps. Seperate with commas)')
 
-    def incomplete_tasks(self, task_number):
-        task_index = task_number - 1
-        if 0<= task_index < len(self.tasks):
-            self.tasks[task_index]['completed'] = False
-            print(f'"{self.tasks[task_index]['task']}" set to incomplete!')
-        else:
-            print('Invalid optoon chosen')
+    def incomplete_tasks(self, task_numbers):
+        try:
+            task_indices = [int(num.strip()) - 1 for num in task_numbers.split(',') if num.strip().isdigit()]
+            for task_index in task_indices:
+                if 0<= task_index < len(self.tasks):
+                    self.tasks[task_index]['completed'] = False
+                    print(f'"{self.tasks[task_index]['task']}" set to incomplete!')
+                else:
+                    print('Invalid optoon chosen')
+        except ValueError:
+            print('No such item number present in the list (Ps. Seperate with commas)')
 
     def edit_tasks(self, task_number, new_task):
         task_index = task_number - 1

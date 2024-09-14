@@ -31,19 +31,19 @@ def main():
                     break
 
         elif choice == "3":
-            task_num = int(input("Please enter the number of the task you wish to delete: "))
+            task_num = input("Please enter the number of the task you wish to delete (For multiple seperate with commas): ")
             todo_list.remove_tasks(task_num)
             todo_list.view_tasks()
             todo_list.save_to_file()
         
         elif choice == "4":
-            task_comp = int(input("Please choose task you wish to mark completed: "))
-            todo_list.complete_tasks(task_comp)
+            tasks_comp = input("Please choose which tasks you wish to mark as completed (For multiple seperate with commas): ")
+            todo_list.complete_tasks(tasks_comp)
             todo_list.view_tasks()
             todo_list.save_to_file()
 
         elif choice == "5":
-            task_incomp = int(input('Please enter number of task you wish to mark incomplete: '))
+            task_incomp = input('Please choose which tasks you wish to mark as incomplete (For multiple seperate with commas): ')
             todo_list.incomplete_tasks(task_incomp)
             todo_list.view_tasks()
             todo_list.save_to_file()
