@@ -80,6 +80,6 @@ class ToDoList():
         confirm = input('Are you sure you want to clear the list? This action cannot be undone. Y/N? ')
         if confirm.lower() == "y":
             self.tasks.clear()
-            print("List has been cleared")
+            print("List has been cleared!")
         else:
-            print("List has not been cleared")
+            print("List has NOT been cleared")
