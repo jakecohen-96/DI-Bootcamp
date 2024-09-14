@@ -1,9 +1,11 @@
 import json
 
 class ToDoList():
-    def __init__(self):
-        self.tasks = []
-        self.load_from_file()
+    def __init__(self, tasks=None):
+        if tasks is None:
+            self.tasks = []
+        else:
+            self.tasks = tasks
 
     def save_to_file(self, filename="tasks.json"):
         with open(filename, 'w') as file:
