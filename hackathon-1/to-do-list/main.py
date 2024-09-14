@@ -21,10 +21,14 @@ def main():
             todo_list.view_tasks()
 
         elif choice == "2":
-            task = input("Please enter a task to set up: ")
-            todo_list.add_tasks(task)
-            todo_list.view_tasks()
-            todo_list.save_to_file()
+            while True:
+                task = input("Please enter a task to set up: ")
+                todo_list.add_tasks(task)
+                todo_list.view_tasks()
+                todo_list.save_to_file()
+                back = input('To go back enter "B" otherwise hit enter to add a new task: ')
+                if back.lower() == "b":
+                    break
 
         elif choice == "3":
             task_num = int(input("Please enter the number of the task you wish to delete: "))
