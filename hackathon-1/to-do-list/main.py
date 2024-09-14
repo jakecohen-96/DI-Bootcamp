@@ -1,3 +1,4 @@
+from auth_handle import AuthManager
 from todo_manager import ToDoList
 
 def main_menu():
@@ -5,13 +6,34 @@ def main_menu():
     print("1. View all Tasks in list")
     print("2. Add a new Task")
     print("3. Remove a Task")
-    print("4. Mark Task as Completed")
+    print("4. M2ark Task as Completed")
     print("5. Mark a Task as InComplete")
     print("6. Edit a Task")
     print("7. Clear list")
     print("8. Exit")
 
 def main():
+    auth_manager = AuthManager()
+    logged_in = False
+
+    while not logged_in:
+        print("Welcome! Please choose an option:")
+        print("1. Register")
+        print("2. Login")
+        choice = input("Please choose an option: ")
+
+        if choice == '1':
+            username = input('Please choose a username: ')
+            password = input('Please choose a password: ')
+            auth_manager.register(username, password)
+
+        elif choice == '2':
+            username = input('Please enter username: ')
+            password = input('Please enter password: ')
+            logged_in = auth_manager.log_in(username, password)
+        else:
+            print('Invalid option chosen!')
+
     todo_list = ToDoList()
     while True:
         main_menu()
