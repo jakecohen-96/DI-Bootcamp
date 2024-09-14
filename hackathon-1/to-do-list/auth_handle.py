@@ -32,7 +32,7 @@ class AuthManager:
     def log_in(self, username, password):
         if username in self.users and self.users[username] == password:
             print('Logged in!')
-            return True
+            return True 
         else:
             print('Username or password entered is incorrect')
             return False

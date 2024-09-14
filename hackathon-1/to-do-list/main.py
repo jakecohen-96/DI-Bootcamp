@@ -18,7 +18,7 @@ def main():
     current_user = None 
     todo_list = None
 
-    while not logged_in:
+    while not logged_in: 
         print("Welcome! Please choose an option:")
         print("1. Register")
         print("2. Login")

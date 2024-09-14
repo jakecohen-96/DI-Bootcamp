@@ -6,7 +6,7 @@ class ToDoList():
             self.tasks = []
         else:
             self.tasks = tasks
-
+ 
     def save_to_file(self, filename="tasks.json"):
         with open(filename, 'w') as file:
             json.dump(self.tasks, file)
