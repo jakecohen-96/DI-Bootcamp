@@ -68,7 +68,14 @@ class AuthManager:
         self.save_all_todos()
 
     def change_pass(self, username, new_pass):
-        pass
+        if username in self.users:
+            self.users[username] = new_pass
+            self.save_user()
+            print(f'{username} password has changed!')
+            return True
+        else:
+            print('Incorrect user entered!')
+            return False
 
     def change_username(self, old_username, new_username):
         pass
