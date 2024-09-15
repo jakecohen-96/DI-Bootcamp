@@ -1,5 +1,7 @@
 import json
 import os
+import bcrypt
+
 
 class AuthManager:
     def __init__(self, username_file='users.json', todo_file='todos.json'):
