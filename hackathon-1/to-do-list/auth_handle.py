@@ -35,7 +35,7 @@ class AuthManager:
     def log_in(self, username, password):
         if username in self.users:
             hashed_pass = self.users[username].encode('utf-8')
-            if bcrypt.checkpw(password.encode('utf-8'), hashed_pass):
+            if bcrypt.checkpw(password.encode('utf-8'), hashed_pass): 
                 print('Logged in!')
                 return True 
         else:
@@ -67,3 +67,8 @@ class AuthManager:
         self.todos[username] = todo_list
         self.save_all_todos()
 
+    def change_pass(self, username, new_pass):
+        pass
+
+    def change_username(self, old_username, new_username):
+        pass
