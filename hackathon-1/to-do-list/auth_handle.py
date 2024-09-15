@@ -78,4 +78,15 @@ class AuthManager:
             return False
 
     def change_username(self, old_username, new_username):
-        pass
+        if old_username in self.users:
+            if new_username in self.users:
+                print('Username already in use!')
+                return False
+            self.users[new_username] = self.users.pop(old_username)
+            self.todos[new_username] = self.todos.pop(old_username, [])
+            self.save_user()
+            self.save_all_todos()
+            print(f'Changed {old_username} to {new_username} successfully!')
+        else:
+            print('Old username not found!')
+            return False

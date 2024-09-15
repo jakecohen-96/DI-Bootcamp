@@ -10,7 +10,9 @@ def main_menu():
     print("5. Mark a Task as InComplete")
     print("6. Edit a Task")
     print("7. Clear list")
-    print("8. Exit")
+    print("8. Change password")
+    print("9. Change username")
+    print("10. Exit")
 
 def main():
     auth_manager = AuthManager()
@@ -91,7 +93,17 @@ def main():
             todo_list.clear_all()
             todo_list.save_to_file()
 
-        elif choice == "8":
+        elif choice == '8':
+            new_pass = input('Please enter new password: ')
+            auth_manager.change_pass(current_user, new_pass)
+
+        elif choice == '9':
+            new_username = input('Please enter new username: ')
+            success = auth_manager.change_username(current_user, new_username) 
+            if success:
+                current_user = new_username
+
+        elif choice == "10":
             if todo_list.tasks:
                 print("Thank you for using the app! Here is your final list. Goodbye!")
                 todo_list.view_tasks()
