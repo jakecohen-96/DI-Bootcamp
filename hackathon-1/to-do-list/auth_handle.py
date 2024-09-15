@@ -26,7 +26,8 @@ class AuthManager:
             print('User already exists!')
             return False
         else:
-            self.users[username] = password
+            hashed_pass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()) #using bcrypt we hash the password with a random salt
+            self.users[username] = hashed_pass.decode('utf-8') # here we dcode it in order to save to the json file
             self.save_user()
             print('Registration successful!')
             return True
