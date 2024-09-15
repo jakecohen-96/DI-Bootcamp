@@ -33,9 +33,11 @@ class AuthManager:
             return True
 
     def log_in(self, username, password):
-        if username in self.users and self.users[username] == password:
-            print('Logged in!')
-            return True 
+        if username in self.users:
+            hashed_pass = self.users[username].encode('utf-8')
+            if bcrypt.checkpw(password.encode('utf-8'), hashed_pass):
+                print('Logged in!')
+                return True 
         else:
             print('Username or password entered is incorrect')
             return False
