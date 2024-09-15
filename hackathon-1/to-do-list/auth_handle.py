@@ -69,9 +69,10 @@ class AuthManager:
 
     def change_pass(self, username, new_pass):
         if username in self.users:
-            self.users[username] = new_pass
+            hashed_pass = bcrypt.hashpw(new_pass.encode('utf-8'), bcrypt.gensalt())
+            self.users[username] = hashed_pass.decode('utf-8')
             self.save_user()
-            print(f'{username} password has changed!')
+            print(f'{username}"s password has been changed!')
             return True
         else:
             print('Incorrect user entered!')
