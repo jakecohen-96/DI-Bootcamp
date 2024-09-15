@@ -37,4 +37,4 @@ This is a simple command-line To-Do List application that allows users to manage
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request for any feature or bug fix.
+Contributions are welcome! Please fork the repository and submit a pull request for any feature or bug fix. (I won't give an answer on when I will get to it!)
