@@ -29,7 +29,12 @@ for (let i = 0; i < 400; i++) { const cell = document.createElement('div');
     grid.appendChild(cell);
 }
 
-
+document.body.addEventListener('mousedown', () => {
+    mouseClick = true;
+});
+document.body.addEventListener('mouseup', () => {
+    mouseClick = false;
+});
 
 const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', () => {
