@@ -7,18 +7,15 @@ body {
     padding: 10px;
 }
 
-#palette {
-    display: grid;
-    grid-template-columns: repeat(6, 50px);
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-#palette div {
-    width: 40px;
-    height: 40px;
+#colorPicker {
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    border: none;
     cursor: pointer;
-    border: 1px solid #333;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
 }
 
 #grid {
@@ -26,6 +23,7 @@ body {
     grid-template-columns: repeat(20, 20px);
     grid-template-rows: repeat(20, 20px);
     gap: 1px;
+    cursor: pointer;
 }
 
 #grid div {
