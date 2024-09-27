@@ -4,6 +4,7 @@ const colors = [
 ];
 
 let selectedColor = 'black';
+let mouseClick = false;
 
 const palette = document.getElementById('palette');
 colors.forEach(color => {
@@ -20,8 +21,15 @@ for (let i = 0; i < 400; i++) { const cell = document.createElement('div');
     cell.addEventListener('click', () => {
         cell.style.backgroundColor = selectedColor;
     });
+    cell.addEventListener('mouseover', () => {
+        if (mouseClick) {
+            cell.style.background = selectedColor;
+        }
+    });
     grid.appendChild(cell);
 }
+
+
 
 const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', () => {
