@@ -25,8 +25,8 @@ for (let i = 0; i < 400; i++) { const cell = document.createElement('div');
 
 const clearButton = document.getElementById('clear');
 clearButton.addEventListener('click', () => {
-    const cells = grid.querySelectorAll('div');
+    const cells = document.querySelectorAll('#grid div');
     cells.forEach(cell => {
-        cells.style.backgroundColor = 'white';
+        cell.style.backgroundColor = 'white';
     });
 });
