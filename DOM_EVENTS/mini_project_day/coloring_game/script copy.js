@@ -1,19 +1,10 @@
-const colors = [
-'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 
-    'pink', 'gray', 'black', 'white', 'cyan'
-];
 
-let selectedColor = 'black';
+let selectedColor = '#000000'
 let mouseClick = false;
 
-const palette = document.getElementById('palette');
-colors.forEach(color => {
-    const colorDiv = document.createElement('div');
-    colorDiv.style.backgroundColor = color;
-    colorDiv.addEventListener('click', () => {
-        selectedColor = color;
-    });
-    palette.appendChild(colorDiv);
+const colorPicker = document.getElementById('colorPicker');
+colorPicker.addEventListener('input', (event) => {
+    selectedColor = event.target.value;
 });
 
 const grid = document.getElementById('grid');
