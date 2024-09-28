@@ -8,7 +8,7 @@ colorPicker.addEventListener('input', (event) => {
 });
 
 const grid = document.getElementById('grid');
-for (let i = 0; i < 400; i++) { const cell = document.createElement('div');
+for (let i = 0; i < 500; i++) { const cell = document.createElement('div');
     cell.addEventListener('click', () => {
         cell.style.backgroundColor = selectedColor;
     });
