@@ -11,7 +11,7 @@ body {
 
 .container {
     display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .drum-pad {
@@ -27,7 +27,7 @@ body {
     align-items: center;
     cursor: pointer;
     transition: transform 0.1s;
-    margin: 10px;
+    
 }
 
 .drum-pad:active {
