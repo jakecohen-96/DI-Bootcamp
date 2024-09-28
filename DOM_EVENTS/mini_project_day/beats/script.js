@@ -13,12 +13,14 @@ function playSound(keycode) {
 }
 
 window.addEventListener('keydown', (e) => {
-    playSound(e.keycode)
-} );
+    const key = e.code;
+    const keyCode = key.charCodeAt(key.length - 1);
+    playSound(keyCode);
+});
 
 const pads = document.querySelectorAll('.drum-pad');
 pads.forEach(pad => {
-    pads.addEventListener('click', () => {
+    pad.addEventListener('click', () => {
         const keycode = pad.getAttribute('data-key');
         playSound(keycode)
     });
