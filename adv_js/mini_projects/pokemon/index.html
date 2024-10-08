@@ -7,24 +7,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1>Pokedex</h1>
+
     <div class="logo">
-        <img src="logo.png" alt="Pokemon logo">
+        <img src="logo.png" alt="Pokemon Logo">
     </div>
 
     <div class="pokedex-container">
         <div class="pokemon-display">
-            <img src="pokedex.png" alt="Pokedex" id="pokedex">
+            <div id="loading">Loading...</div>
+            <img id="pokemon-image" src="pokedex.png" alt="Pokemon image">
+        </div>
+
+        <div class="pokemon-info">
             <h2 id="pokemon-name">Name: </h2>
             <p id="pokemon-id">ID: </p>
             <p id="pokemon-height">Height: </p>
             <p id="pokemon-weight">Weight: </p>
+            <p id="pokemon-type">Type: </p>
         </div>
 
         <div class="buttons">
             <button id="previous-button">Previous</button>
-            <button id="random-button">Random Pokemon</button>
+            <button id="random-button">Random Pokémon</button>
             <button id="next-button">Next</button>
         </div>
+
+        <div class="input-container">
+            <p>Additionally, yuou can enter a number an go to a specific Pokémon based on ID!</p>
+           Please enter Pokémon ID number (1-1000) : <input type="number" id="pokemon-id-input" placeholder="####" min="1" max="1000">
+            <button id="go-button">Go</button>
+        </div>
+
+        <div id="error-message"></div>
     </div>
 
     <script src="script.js" defer></script>

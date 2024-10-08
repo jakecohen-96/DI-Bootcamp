@@ -3,7 +3,7 @@ body {
     font-family: Arial;
 }
 
-#pokedex {
+#pokemon-image {
     max-width: 460px;
 }
 
@@ -27,3 +27,35 @@ body {
     background-color: darkred;
 }
 
+#loading {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
+    display: none;
+}
+
+#error-message {
+    color: red; 
+    display: none;
+}
+
+#pokemon-id-input {
+    width: 80px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#go-button {
+    padding: 5px 10px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+#go-button:hover {
+    background-color: darkgreen;
+}
