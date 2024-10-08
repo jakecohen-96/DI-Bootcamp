@@ -23,4 +23,5 @@ fetch(`https://swapi.dev/api/people/${randomId}/`)
 
 document.querySelector(".character-info").style.display = "none";
 
+  
 });
