@@ -1,3 +1,29 @@
-#pokedex {
-    width: 70%;
+body {
+    text-align: center;
+    font-family: Arial;
 }
+
+#pokedex {
+    max-width: 460px;
+}
+
+.pokedex-container {
+    border: 2px solid red;
+    padding: 20px;
+    max-width: 460px;
+    margin: 20px auto;
+}
+
+.buttons button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1em;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background-color: darkred;
+}
+
