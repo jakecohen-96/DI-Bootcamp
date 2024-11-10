@@ -1,5 +1,5 @@
 const knex = require('knex');
-require("dotenv").config();
+require('dotenv').config();
 
 const {PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT, PGSTRINGURI} = process.env
 
@@ -18,7 +18,7 @@ const db = require('knex')({
 
 
 async function getVersion() {
-    const result = await db.raw("SELECT * from products");
+    const result = await db.raw("SELECT version()");
     console.log(result.rows);
   }
   
