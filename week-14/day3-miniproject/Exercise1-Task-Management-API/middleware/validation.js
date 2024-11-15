@@ -7,5 +7,3 @@ module.exports.validateTask = (req, res, next) => {
     }
     next();
 };
-
-module.exports = validateTask;
