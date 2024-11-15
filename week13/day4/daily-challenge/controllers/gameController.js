@@ -22,7 +22,7 @@ exports.getEmojiQuestion = (req, res) => {
         }
     }
 
-    // shuffle options
+    // shuffle optionsx
     options.sort(() => Math.random() - 0.5);
 
     res.json({ emoji: correctEmoji.emoji, options });
