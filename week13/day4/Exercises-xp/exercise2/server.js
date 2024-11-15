@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
 const bookRoutes = require('./routes/bookRoutes');
 
 //parsing
@@ -8,7 +8,7 @@ app.use(express.json());
 
 // welcome message
 app.get('/', (req, res) => {
-    res.send("Welcome to the Book API! Use /books to manage the collection of books.");
+    res.send("Welcome to book api. Use /books to manage the collection of books.");
 });
 
 //  using routes
