@@ -19,6 +19,7 @@ const saveTasks = (tasks) => {
 
 const tasks = loadTasks();
 
+// menu
 const displayMenu = () => {
     console.log('\nWhat would you like to do?');
     console.log('1. View Tasks');
@@ -28,4 +29,41 @@ const displayMenu = () => {
     return choice;
 };
 
+// view tasks
+const viewTasks = () => {
+    console.log('\nYour To-Do List:');
+    if (tasks.length === 0) {
+        console.log('No tasks yet, please add some first');
+    } else {
+        tasks.forEach((task, index) => {
+            console.log(`${index + 1}. ${task}`);
+        });
+    }
+};
 
+// first menu option functionality
+const addTask = () => {
+    const task = readline.question('Enter a new task please: ');
+    tasks.push(task);
+    saveTasks(task);
+    console.log('Task added succefully!');
+    
+};
+
+// main loop
+while (true) {
+    const choice = displayMenu();
+    if (choice === '1') {
+        viewTasks();
+    } 
+    else if (choice === '2') {
+        addTask();
+    }
+     else if (choice === '3') {
+        console.log('Goodbye!');
+        break;
+    }
+     else {
+        console.log('Invalid choice. Please try again.');
+    }
+}
