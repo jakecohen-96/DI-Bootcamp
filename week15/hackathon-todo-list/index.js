@@ -33,13 +33,45 @@ const saveTasks = (tasks) => {
 
 const tasks = loadTasks();
 
+const deleteTasks = () => {
+    if (tasks.length === 0) {
+        console.log('No tasks to delete!');
+        return;
+    }
+
+    console.log('\nYour To-Do List:');
+    tasks.forEach((task, index) => {
+        console.log(`${index + 1}. ${task}`);
+    });
+
+    const input = readline.question('Enter the numbers of the tasks to delete (seperate by comma): ');
+    const taskNumbers = input.split(',').map((num) => parseInt(num.trim()));
+
+    // validating task numvers
+    const invalidNumbers = taskNumbers.filter((num) => isNaN(num) || num < 1 || num > tasks.length);
+    if (invalidNumbers.length > 0) {
+        console.log(`Invalid task numbers: ${invalidNumbers.join(', ')}. Please try again.`);
+        return;
+    }
+
+    // Remove tasks in reverse order to prevent index shifting
+    taskNumbers.sort((a, b) => b - a).forEach((num) => {
+        const deletedTask = tasks.splice(num - 1, 1);
+        console.log(`Task "${deletedTask}" has been deleted.`);
+    });
+
+    saveTasks(tasks);
+    console.log('Selected tasks have been deleted.');
+};
+
 // menu
 const displayMenu = () => {
     console.log('\nWhat would you like to do?');
     console.log('1. View Tasks');
     console.log('2. Add a Task');
-    console.log('3. Exit');
-    const choice = readline.question('Enter your choice: ');
+    console.log('3. Delete Tasks');
+    console.log('4. Exit');
+    const choice = readline.question('Please choose an option: ');
     return choice;
 };
 
@@ -72,7 +104,10 @@ while (true) {
     else if (choice === '2') {
         addTask();
     }
-     else if (choice === '3') {
+    else if (choice === '3') {
+        deleteTasks();
+    }
+     else if (choice === '4') {
         console.log('Goodbye!');
         break;
     }
