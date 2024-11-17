@@ -9,12 +9,26 @@ const loadTasks = () => {
         fs.writeFileSync(filePath, JSON.stringify([]));
     }
     const data = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(data);
+    try {
+        const tasks = JSON.parse(data);
+        if (!Array.isArray(tasks)) {
+            throw new Error('Data is not an array');
+        }
+        return tasks;
+    } catch (error) {
+        console.error('Invalid tasks.json. Resetting to an empty list:', error.message);
+        fs.writeFileSync(filePath, JSON.stringify([])); // Reset to empty array
+        return [];
+    }
 };
 
-// save tasks to file
+// save tasks to json
 const saveTasks = (tasks) => {
-    fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
+    try {
+        fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
+    } catch (error) {
+        console.error('Error saving tasks:', error.message);
+    }
 };
 
 const tasks = loadTasks();
@@ -32,8 +46,8 @@ const displayMenu = () => {
 // view tasks
 const viewTasks = () => {
     console.log('\nYour To-Do List:');
-    if (tasks.length === 0) {
-        console.log('No tasks yet, please add some first');
+    if (!Array.isArray(tasks) || tasks.length === 0) {
+        console.log('No tasks yet!');
     } else {
         tasks.forEach((task, index) => {
             console.log(`${index + 1}. ${task}`);
@@ -41,13 +55,12 @@ const viewTasks = () => {
     }
 };
 
-// first menu option functionality
+// first menu option (adding a task) functionality
 const addTask = () => {
-    const task = readline.question('Enter a new task please: ');
-    tasks.push(task);
-    saveTasks(task);
-    console.log('Task added succefully!');
-    
+    const task = readline.question('Enter a new task: ');
+    tasks.push(task); 
+    saveTasks(tasks); 
+    console.log('Task added successfully!');
 };
 
 // main loop
