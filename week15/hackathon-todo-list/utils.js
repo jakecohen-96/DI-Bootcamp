@@ -5,4 +5,14 @@ const askToGoBack = () => {
     return answer === 'y';
 };
 
-module.exports = { askToGoBack };
+
+const validateDate = (date) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(date)) return false;
+
+    const [year, month, day] = date.split('-').map(Number);
+    const isValid = !isNaN(Date.parse(`${year}-${month}-${day}`));
+    return isValid;
+};
+
+module.exports = { askToGoBack, validateDate };

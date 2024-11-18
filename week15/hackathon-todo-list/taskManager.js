@@ -29,42 +29,37 @@ const saveTasks = (tasks) => {
 
 const tasks = loadTasks();
 
-const addTask = (description, category) => {
-    tasks.push({ description, category });
-    saveTasks(tasks);
-};
-
-const deleteTasks = (taskNumbers) => {
-    taskNumbers.sort((a, b) => b - a).forEach(num => {
-        tasks.splice(num - 1, 1);
-    });
+const addTask = (description, category, date) => {
+    tasks.push({ description, category, date });
     saveTasks(tasks);
 };
 
 const clearAllTasks = () => {
     tasks.length = 0;
-    saveTasks(tasks);
+    saveTasks(tasks); 
 };
 
-const editTask = (taskNumber, newDescription) => {
-    tasks[taskNumber - 1].description = newDescription;
-    saveTasks(tasks);
+
+const getNotificationTasks = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize to the start of the day
+
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const overdueTasks = tasks.filter(task => new Date(task.date) < today);
+    const todayTasks = tasks.filter(task => new Date(task.date).toDateString() === today.toDateString());
+    const tomorrowTasks = tasks.filter(task => new Date(task.date).toDateString() === tomorrow.toDateString());
+
+    return { overdueTasks, todayTasks, tomorrowTasks };
 };
 
-const editTaskCategory = (taskNumbers, newCategory) => {
-    taskNumbers.forEach(num => {
-        tasks[num - 1].category = newCategory;
-    });
-    saveTasks(tasks);
-};
 
 module.exports = {
     tasks,
     addTask,
-    deleteTasks,
     clearAllTasks,
-    editTask,
-    editTaskCategory,
-    loadTasks,
     saveTasks,
+    loadTasks,
+    getNotificationTasks,
 };
