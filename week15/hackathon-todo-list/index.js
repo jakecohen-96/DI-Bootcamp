@@ -68,13 +68,60 @@ const deleteTasks = () => {
     }
 };
 
+// edit task
+const editTask = () => {
+    while (true) {
+        if (tasks.length === 0) {
+            console.log('No tasks to edit!');
+            return;
+        }
+
+        console.log('\nYour To-Do List:');
+        tasks.forEach((task, index) => {
+            console.log(`${index + 1}. ${task}`);
+        });
+
+        const taskNumber = readline.questionInt('Enter the number of the task to edit (or 0 to cancel): ');
+
+        // Allow user to cancel
+        if (taskNumber === 0) {
+            console.log('Edit cancelled. Returning to the menu.');
+            break;
+        }
+
+        // Validate task number
+        if (taskNumber < 1 || taskNumber > tasks.length) {
+            console.log('Invalid task number. Please try again.');
+            continue;
+        }
+
+        const currentDescription = tasks[taskNumber - 1];
+        console.log(`Current description: "${currentDescription}"`);
+        const newDescription = readline.question('Enter the new description for the task (or press Enter to cancel): ');
+
+        // incase user does not enter changes
+        if (newDescription.trim() === '') {
+            console.log('No changes made to task. Returning to the main menu.');
+            break;
+        }
+
+        tasks[taskNumber - 1] = newDescription; // Update the task
+        saveTasks(tasks);
+        console.log('Task updated successfully!');
+
+        if (askToGoBack()) break;
+    }
+};
+
+
 // Display menu
 const displayMenu = () => {
     console.log('\nWhat would you like to do?');
     console.log('1. View Tasks');
     console.log('2. Add a Task');
     console.log('3. Delete Tasks');
-    console.log('4. Exit');
+    console.log('4. Edit a Task');
+    console.log('5. Exit');
     const choice = readline.question('Please choose an option: ');
     return choice;
 };
@@ -125,11 +172,14 @@ while (true) {
     else if (choice === '3') {
         deleteTasks();
     }
-     else if (choice === '4') {
+    else if (choice === '4') {
+        editTask()
+    }
+     else if (choice === '5') {
         console.log('Goodbye!');
         break;
     } 
     else {
-        console.log('Invalid choice. Please try again.');
+        console.log('incorrect choice. Please choose an option from the menu.');
     }
 }
