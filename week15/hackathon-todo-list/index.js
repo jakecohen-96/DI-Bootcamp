@@ -1,185 +1,136 @@
-const fs = require('fs');
 const readline = require('readline-sync');
+const {
+    tasks,
+    addTask,
+    deleteTasks,
+    clearAllTasks,
+    editTask,
+    editTaskCategory,
+} = require('./taskManager');
+const {
+    searchTasksByKeyword,
+    searchTasksByCategory,
+    searchTasksByBoth,
+} = require('./search');
+const { askToGoBack } = require('./utils');
 
-const filePath = './tasks.json';
-
-// Load tasks from file
-const loadTasks = () => {
-    if (!fs.existsSync(filePath)) {
-        fs.writeFileSync(filePath, JSON.stringify([]));
-    }
-    const data = fs.readFileSync(filePath, 'utf8');
-    try {
-        const tasks = JSON.parse(data);
-        if (!Array.isArray(tasks)) {
-            throw new Error('Data is not an array');
-        }
-        return tasks;
-    } catch (error) {
-        console.error('Invalid tasks.json. Resetting to an empty list:', error.message);
-        fs.writeFileSync(filePath, JSON.stringify([])); // Reset to empty array
-        return [];
-    }
-};
-
-// Save tasks to file
-const saveTasks = (tasks) => {
-    try {
-        fs.writeFileSync(filePath, JSON.stringify(tasks, null, 2));
-    } catch (error) {
-        console.error('Error saving tasks:', error.message);
-    }
-};
-
-const tasks = loadTasks();
-
-const deleteTasks = () => {
-    while (true) {
-        if (tasks.length === 0) {
-            console.log('No tasks to delete!');
-            return;
-        }
-
-        console.log('\nYour To-Do List:');
-        tasks.forEach((task, index) => {
-            console.log(`${index + 1}. ${task}`);
-        });
-
-        const input = readline.question('Enter the numbers of the tasks to delete (separate by comma): ');
-        const taskNumbers = input.split(',').map((num) => parseInt(num.trim()));
-
-        // Validate task numbers
-        const invalidNumbers = taskNumbers.filter((num) => isNaN(num) || num < 1 || num > tasks.length);
-        if (invalidNumbers.length > 0) {
-            console.log(`Invalid task numbers: ${invalidNumbers.join(', ')}. Please try again.`);
-            continue;
-        }
-
-        // Remove tasks in reverse order to prevent index shifting
-        taskNumbers.sort((a, b) => b - a).forEach((num) => {
-            const deletedTask = tasks.splice(num - 1, 1);
-            console.log(`Task "${deletedTask}" has been deleted.`);
-        });
-
-        saveTasks(tasks);
-        console.log('Selected tasks have been deleted.');
-
-        if (askToGoBack()) break;
-    }
-};
-
-// edit task
-const editTask = () => {
-    while (true) {
-        if (tasks.length === 0) {
-            console.log('No tasks to edit!');
-            return;
-        }
-
-        console.log('\nYour To-Do List:');
-        tasks.forEach((task, index) => {
-            console.log(`${index + 1}. ${task}`);
-        });
-
-        const taskNumber = readline.questionInt('Enter the number of the task to edit (or 0 to cancel): ');
-
-        // Allow user to cancel
-        if (taskNumber === 0) {
-            console.log('Edit cancelled. Returning to the menu.');
-            break;
-        }
-
-        // Validate task number
-        if (taskNumber < 1 || taskNumber > tasks.length) {
-            console.log('Invalid task number. Please try again.');
-            continue;
-        }
-
-        const currentDescription = tasks[taskNumber - 1];
-        console.log(`Current description: "${currentDescription}"`);
-        const newDescription = readline.question('Enter the new description for the task (or press Enter to cancel): ');
-
-        // incase user does not enter changes
-        if (newDescription.trim() === '') {
-            console.log('No changes made to task. Returning to the main menu.');
-            break;
-        }
-
-        tasks[taskNumber - 1] = newDescription; // Update the task
-        saveTasks(tasks);
-        console.log('Task updated successfully!');
-
-        if (askToGoBack()) break;
-    }
-};
-
-
-// Display menu
+// Menu and Main Loop
 const displayMenu = () => {
     console.log('\nWhat would you like to do?');
     console.log('1. View Tasks');
     console.log('2. Add a Task');
     console.log('3. Delete Tasks');
     console.log('4. Edit a Task');
-    console.log('5. Exit');
+    console.log('5. Edit Task Category');
+    console.log('6. Clear All Tasks');
+    console.log('7. Search Tasks');
+    console.log('8. Exit');
     const choice = readline.question('Please choose an option: ');
     return choice;
 };
 
-// Ask to go back to the menu
-const askToGoBack = () => {
-    const answer = readline.question('Do you want to return to the main menu? (y/n): ').toLowerCase();
-    return answer === 'y';
-};
-
-// View tasks
-const viewTasks = () => {
-    while (true) {
-        console.log('\nYour To-Do List:');
-        if (tasks.length === 0) {
-            console.log('No tasks yet!');
-        } else {
-            tasks.forEach((task, index) => {
-                console.log(`${index + 1}. ${task}`);
-            });
-        }
-
-        if (askToGoBack()) break;
+const viewTasks = (taskList = tasks) => {
+    console.log('\nYour To-Do List:');
+    if (taskList.length === 0) {
+        console.log('No tasks yet!');
+        return;
     }
+    taskList.forEach((task, index) => {
+        console.log(`${index + 1}. ${task.description} [${task.category}]`);
+    });
 };
 
-// Add a task
-const addTask = () => {
-    while (true) {
-        const task = readline.question('Enter a new task: ');
-        tasks.push(task); 
-        saveTasks(tasks);
-        console.log('Task added successfully!');
-
-        if (askToGoBack()) break;
-    }
-};
-
-// Main loop
 while (true) {
     const choice = displayMenu();
+
     if (choice === '1') {
         viewTasks();
     } 
+
     else if (choice === '2') {
-        addTask();
+        const description = readline.question('Enter new task: ');
+        const category = readline.question('Enter task category: ');
+        addTask(description, category);
+        console.log('Task added successfully');
+        
     } 
+
     else if (choice === '3') {
-        deleteTasks();
-    }
+        viewTasks();
+        const input = readline.question('Enter the task numbers to delete (comma-separated for multiple): ');
+        const taskNumbers = input.split(',').map(num => parseInt(num.trim()));
+        deleteTasks(taskNumbers);
+        console.log('Tasks deleted successfully!');
+    } 
+
     else if (choice === '4') {
-        editTask()
+        viewTasks();
+        const taskNumber = readline.questionInt('Enter number of task to edit: ');
+        const newDescription = readline.question('Please edit task (if empty no changes will be made): ');
+        if (newDescription.trim() !== '') {
+            editTask(taskNumber, newDescription);
+            console.log('Task updated successfully!');
+        } else {
+            console.log('No changes were made to the task.');
+        }
+    } 
+
+    else if (choice === '5') {
+        viewTasks();
+
+        const input = readline.question('Enter number of task category to update (comma-separated for multiple): ');
+        const taskNumbers = input.split(',').map(num => parseInt(num.trim()));
+        const newCategory = readline.question('Enter new category: ');
+        editTaskCategory(taskNumbers, newCategory);
+        console.log('Categories updated successfully');
+    } 
+
+    else if (choice === '6') {
+        clearAllTasks();
+        console.log('All tasks cleared');
+    } 
+
+    else if (choice === '7') {
+        console.log('\nSearch Options:');
+        console.log('1. Search by Keyword');
+        console.log('2. Search by Category');
+        console.log('3. Search by Both');
+
+        const searchChoice = readline.question('Please select search option: ');
+
+        if (searchChoice === '1') {
+            const keyword = readline.question('Enter the keyword: ');
+            const results = searchTasksByKeyword(tasks, keyword);
+            viewTasks(results);
+
+        } 
+
+        else if (searchChoice === '2') {
+            const existingCategories = [...new Set(tasks.map(task => task.category))];
+            console.log('Available categories:');
+            existingCategories.forEach((cat, index) => {
+                console.log(`${index + 1}. ${cat}`);
+            });
+
+            const categoryChoice = readline.question('Enter the exact category to search for: ');
+            const results = searchTasksByCategory(tasks, categoryChoice);
+            viewTasks(results);
+        }
+
+        else if (searchChoice === '3') {
+            const keyword = readline.question('Enter the keyword: ');
+            const category = readline.question('Enter the category: ');
+            const results = searchTasksByBoth(tasks, keyword, category);
+            viewTasks(results);
+        }
     }
-     else if (choice === '5') {
+    
+    else if (choice === '8') {
         console.log('Goodbye!');
         break;
     } 
+    
     else {
-        console.log('incorrect choice. Please choose an option from the menu.');
+        console.log('Invalid choice. Please try again.');
     }
 }
