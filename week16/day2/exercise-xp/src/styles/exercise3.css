@@ -1,0 +1,64 @@
+.exercise-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .header {
+    color: white;
+    background-color: DodgerBlue;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .para {
+    background-color: #282c34;
+    color: white;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .link {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .form {
+    margin-top: 20px;
+  }
+  
+  .input {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: DodgerBlue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .image-section {
+    margin-top: 20px;
+  }
+  
+  .react-logo {
+    width: 300px;
+    height: auto;
+  }
+  
+  .list-section {
+    margin-top: 20px;
+  }
+  
+  .list {
+    list-style-type: circle;
+    display: inline-block;
+    text-align: left;
+  }
