@@ -46,3 +46,13 @@ node server.js
 ```
 
 And everything works! So the concept is pretty easy - you need to have modules folder in the root of your project, to give an access for all modules to the dependencies.
+
+P.S. About the node_modules - it is a good practice to add it to .gitignore to prevent pushing it to the github. You don't need to add every single folder, it is more comfortable just to use the mask:
+
+node_modules
+
+or
+
+/node_modules
+
+It will prevent it from pushing in every directory. The way how to ignore it depends on the project, first option will exclude only root directory (and usually it is all that you need) and the second option will exclude all node_module directories in any folder.
