@@ -5,7 +5,8 @@ class ExampleClassComponent extends React.Component {
         super();
         this.state = {
             users: [],
-            text: "please click button", // Fixed typo in the default text
+            text: "please click button",
+            inputValue: "",
         };
     }
 
@@ -20,15 +21,21 @@ class ExampleClassComponent extends React.Component {
             });
     };
 
+    handleInputChange = (e) => {
+        this.setState({ inputValue: e.target.value });
+    };
+
     render() {
         return (
             <>
                 <h2>Example of a class component</h2>
-                <h2>{this.state.text}</h2> {/* Corrected the reference */}
+                <h2>{this.state.text}</h2>
                 <button onClick={this.fetchUsers}>Get Users</button>
                 {this.state.users.map((item, index) => {
                     return <div key={index}>{item.name}</div>;
                 })}
+                <input onChange={this.handleInputChange}/>
+                <p>{this.state.inputValue}</p>
             </>
         );
     }
