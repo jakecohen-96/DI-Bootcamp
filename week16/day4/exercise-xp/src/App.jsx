@@ -5,6 +5,7 @@ import './App.css'
 import Car from './components/car.jsx';
 import Events from './components/Events.jsx';
 import Phone from './components/Phone.jsx'
+import Color from './components/Color.jsx';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
      <Car model='audi'/>
     <Events />
     <Phone/>
+    <Color/>
     </>
   )
 }
