@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Car from './components/car.jsx';
 import Events from './components/Events.jsx';
+import Phone from './components/Phone.jsx'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <>
      <Car model='audi'/>
     <Events />
+    <Phone/>
     </>
   )
 }
