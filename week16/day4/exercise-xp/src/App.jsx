@@ -8,9 +8,10 @@ function App() {
 
   return (
     <>
-     <Car/>
+     <Car model='audi'/>
+
     </>
   )
 }
 
-export default App
+export default App;

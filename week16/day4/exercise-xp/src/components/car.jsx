@@ -1,9 +1,9 @@
-const Car = () => {
+const Car = ({ model }) => {
     return (
-        <div style={{color: 'blue'}}>
-            This is a blue car
-        </div>
+      <div style={{ color: 'blue' }}>
+        This is a blue {model} car
+      </div>
     );
-};
-
-export default Car;
+  };
+  
+  export default Car;
