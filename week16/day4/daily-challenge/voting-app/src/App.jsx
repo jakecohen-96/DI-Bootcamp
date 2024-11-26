@@ -9,8 +9,9 @@ function App() {
     { name: "Java", votes: 0 },
   ]);
 
-  const handleVote = () => {
-
+  const handleVote = (i) => {
+    languages[i].votes++ 
+    setLanguages([...languages]) // never change the actual reference for the code. else react will not know where to go. Always clone in an array(an object) so we can mutate that.
   }
 
   return (
