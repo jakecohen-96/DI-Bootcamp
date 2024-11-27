@@ -1,16 +1,13 @@
 import React from 'react';
 import BuggyCounter from './components/BuggyCounter1.jsx';
-import ErrorBoundary from './components/ErrorBoundary1.jsx';
+import LifecyclePart1 from './components/LifecyclePart1.jsx';
+
 
 function App() {
   return (
     <div>
-      <ErrorBoundary>
-        <BuggyCounter />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <BuggyCounter />
-      </ErrorBoundary>
+      <BuggyCounter />
+      <LifecyclePart1/>
     </div>
   );
 }
