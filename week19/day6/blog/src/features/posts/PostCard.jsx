@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { addReaction } from "./state/slice";
+import { useAppDispatch } from "../../app/hooks";
 
 const reactionEmoji = {
   thumbsUp: "👍",
@@ -11,7 +11,7 @@ const reactionEmoji = {
 };
 
 const PostCard = ({ post }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleReaction = (reaction) => {
     dispatch(addReaction({ postId: post.id, reaction }));

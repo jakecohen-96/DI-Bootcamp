@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./state/slice";
 import PostCard from "./PostCard";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 const PostList = () => {
-  const dispatch = useDispatch();
-  const { posts, status, error } = useSelector((state) => state.posts);
+  const dispatch = useAppDispatch();
+  const { posts, status, error } = useAppSelector((state) => state.posts);
 
   useEffect(() => {
     if (status === "idle") {
@@ -14,7 +14,7 @@ const PostList = () => {
   }, [status, dispatch]);
 
   if (status === "loading") {
-    return <p>Loading...</p>;
+    return <p>Loading posts...</p>;
   }
 
   if (status === "failed") {

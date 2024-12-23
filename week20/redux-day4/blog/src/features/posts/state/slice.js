@@ -13,6 +13,8 @@ export const fetchPosts = createAsyncThunk("posts/fetch", async () => {
   return res.data;
 });
 
+
+
 const postsSlice = createSlice({
   name: "posts",
   initialState,

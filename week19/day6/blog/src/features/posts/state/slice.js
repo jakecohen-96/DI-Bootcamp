@@ -6,8 +6,8 @@ const initialState = {
   error: null,
 };
 
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async (url = "https://jsonplaceholder.typicode.com/posts") => {
+  const response = await fetch(url);
   const data = await response.json();
   return data.map((post) => ({
     ...post,
