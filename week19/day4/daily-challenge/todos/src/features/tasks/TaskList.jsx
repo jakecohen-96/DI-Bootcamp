@@ -1,23 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTask } from "./state/slice";
 
-const TaskList = () => {
-    const tasks = useSelector((state) => state.tasks.tasks);
+const TaskList = ({ selectedDate }) => {
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) =>
+    state.tasks.tasks.filter((task) => task.date === selectedDate)
+  );
 
-    const sortedTasks = [...tasks].sort((a, b) => new Date(a.date) - new Date(b.date));
-  
-    return (
-      <div>
-        <h2>Task List</h2>
-        <ul>
-          {sortedTasks.map((task) => (
-            <li key={task.id}>
-              <strong>{task.text}</strong> - {task.date}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+  const handleDelete = (id) => {
+    dispatch(deleteTask({ id }));
   };
-  
-  export default TaskList;
+
+  return (
+    <ul>
+      {tasks.map((task) => (
+        <li key={task.id}>
+          {task.text}
+          <button onClick={() => handleDelete(task.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default TaskList;

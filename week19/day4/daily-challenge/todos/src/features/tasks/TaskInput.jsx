@@ -1,36 +1,29 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTask } from './state/slice';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTask } from "./state/slice";
 
-const TaskInput = () => {
-    const [task, setTask] = useState('');
-    const [date, setDate] = useState('');
-    const dispatch = useDispatch();
-  
-    const handleAddTask = () => {
-      if (task.trim() && date) {
-        dispatch(addTask({ text: task, date })); 
-        setTask(''); 
-        setDate('');
-      }
-    };
-  
-    return (
-      <div>
-        <input
-          type="text"
-          placeholder="Add task..."
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-        />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <button onClick={handleAddTask}>Add Task</button>
-      </div>
-    );
+const TaskInput = ({ selectedDate }) => {
+  const [taskText, setTaskText] = useState("");
+  const dispatch = useDispatch();
+
+  const handleAddTask = () => {
+    if (taskText.trim()) {
+      dispatch(addTask({ text: taskText, date: selectedDate }));
+      setTaskText("");
+    }
   };
-  
-  export default TaskInput;
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={taskText}
+        onChange={(e) => setTaskText(e.target.value)}
+        placeholder="Add a new task"
+      />
+      <button onClick={handleAddTask}>Add Task</button>
+    </div>
+  );
+};
+
+export default TaskInput;
