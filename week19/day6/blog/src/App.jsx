@@ -5,7 +5,7 @@ import PostList from "./features/posts/PostList";
 const App = () => {
   return (
     <div>
-      <h1>Posts</h1>
+      <h1>Posts</h1> 
       <UserSelect />
       <PostList />
     </div>
