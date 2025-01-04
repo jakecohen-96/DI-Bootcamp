@@ -15,4 +15,13 @@ class Employee {
         this.position = position;
         this.department = department;
     }
+
+    public getEmployeeInfo(): string {
+        return `Name: ${this.name}, Position: ${this.position}`;
+    }
+    
 }
+
+const employee = new Employee('dan', 1, 'employee', 'warehouse');
+console.log(employee.getEmployeeInfo());
+
