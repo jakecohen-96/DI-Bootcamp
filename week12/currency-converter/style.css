@@ -1,55 +1,44 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: url('https://mpudata.sfo2.digitaloceanspaces.com/original/2X/6/6f7d37cd5f7ef08a2a17602e0aa6ad3a6880d747.jpeg') no-repeat center center/cover;
+    background: url('https://img.freepik.com/premium-vector/banking-service-background-bank-building-icon-made-with-currency-symbols-dollar-euro-yen-pound-icons_127544-803.jpg?semt=ais_hybrid') no-repeat center center/cover;
     color: white;
 }
 
 .container {
+    margin-top: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.converter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    gap: 10px;
 }
 
-.title {
-    font-size: 50px;
-    font-family: 'Star Jedi', sans-serif;
-    color: rgb(255, 255, 0);
-}
-
-.character-card {
-    border: 2px solid yellow;
-    padding: 20px;
-    width: 300px;
-    background-color: rgba(0, 0, 0, 0.8);
-    margin-top: 20px;
-    border-radius: 10px;
+select, input, button {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: yellow;
-    color: black;
-    font-weight: bold;
-    border: none;
     cursor: pointer;
-    border-radius: 5px;
+    background-color: yellow;
+    font-weight: bold;
 }
 
 button:hover {
     background-color: orange;
 }
 
-.loading {
+#result {
     font-size: 20px;
     font-weight: bold;
-    color: white;
-}
-
-.error {
-    font-size: 20px;
-    font-weight: bold;
-    color: red;
+    margin-top: 10px;
 }
